@@ -1,0 +1,9 @@
+[Unit]
+Description=Docker Authz Plugin
+After=network-online.target firewalld.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/lib/docker-auth-crl/docker-auth-crl.rb -e production -p 3123 /etc/docker-ca/easy-rsa/easyrsa3/pki/crl.pem
+User=docker-auth-crl
