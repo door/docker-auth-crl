@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# ./docker-auth-crl.rb -e production -p 3123 /etc/docker-ca/easy-rsa/easyrsa3/pki/crl.pem
-
 require 'openssl'
 require 'sinatra'
 require 'base64'
