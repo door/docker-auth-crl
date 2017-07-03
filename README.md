@@ -30,16 +30,22 @@ chmod 644 pki/crl.pem
 ```
 
 Configure docker:
-```
+```sh
 systemctl edit docker.service
 ```
 
 Set `ExecStart`:
 
-```
+```sh
 [Service]
 ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// --authorization-plugin=docker-auth-crl --host tcp://0.0.0.0:2367 --tlsverify --tlscacert /etc/docker-ca/easy-rsa/easyrsa3/pki/ca.crt --tlscert /etc/docker-ca/easy-rsa/easyrsa3/pki/issued/YOUR-HOSTNAME.crt --tlskey /etc/docker-ca/easy-rsa/easyrsa3/pki/private/YOUR-HOSTNAME.key
+```
+
+
+Restart docker:
+```sh
+systemctl restart docker.service
 ```
 
 
